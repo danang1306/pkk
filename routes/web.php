@@ -18,6 +18,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 Route::get('/',function(){
     return view('home');
 });
+Route::get('/dashboard',function(){
+    return view('dashboard-user');
+});
 
 Route::group([
     'prefix' => 'admin',
@@ -43,7 +46,7 @@ Route::group([
             Route::get('/','CustomerController@index')
                 ->name('customer');
             Route::get('edit/{id}','CustomerController@edit')
-                ->name('customer.edit');   
+                ->name('customer.edit');
             Route::put('update/{id}','CustomerController@update')
                 ->name('customer.update');
             Route::delete('delete/{id}','CustomerController@destroy')
@@ -53,7 +56,7 @@ Route::group([
             Route::patch('nonactive/{id}','CustomerController@setnonactive')
                 ->name('customer.nonactive');
             Route::get('search','CustomerController@show')
-                ->name('customer.search');   
+                ->name('customer.search');
         });
         Route::group([
             'prefix' => 'supplier'
@@ -61,7 +64,7 @@ Route::group([
             Route::get('/','SupplierController@index')
                 ->name('supplier');
             Route::get('edit/{id}','SupplierController@edit')
-                ->name('supplier.edit');   
+                ->name('supplier.edit');
             Route::put('update/{id}','SupplierController@update')
                 ->name('supplier.update');
             Route::delete('delete/{id}','SupplierController@destroy')
@@ -71,7 +74,7 @@ Route::group([
             Route::get('{id}/bus','SupplierController@viewbus')
                 ->name('supplier.viewbus');
             Route::get('search','SupplierController@show')
-                ->name('supplier.search');   
+                ->name('supplier.search');
         });
         Route::group([
             'prefix' => 'transaction'

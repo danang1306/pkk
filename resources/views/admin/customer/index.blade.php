@@ -42,7 +42,7 @@
                           @foreach($data as $datas)
                           <tr>
                             <td p-0>{{ $loop->iteration }}</td>
-                            
+
                             <td style="min-width:200px;">{{ $datas->nama }}</td>
 
                             <td style="min-width:120px">
@@ -52,12 +52,12 @@
                             <td>{{$datas->alamat}}</td>
                             <td>
                               <div class="badge @if($datas->status == 'A' ) badge-success @endif  @if($datas->status == 'D' ) badge-danger @endif">
-                                @if($datas->status == 'A' ) 
-                                  Active 
-                                @endif  
-                                
-                                @if($datas->status == 'D' ) 
-                                  Deactive 
+                                @if($datas->status == 'A' )
+                                  Active
+                                @endif
+
+                                @if($datas->status == 'D' )
+                                  Deactive
                                 @endif
                               </div>
                             </td>
@@ -66,18 +66,18 @@
                                   <form action="{{ route('admin.customer.nonactive',$datas->id) }}" class="d-inline" method="post">
                                     @csrf
                                     @method('patch')
-                                    <button type="submit" class="btn btn-secondary"><i class="fas fa-power-off"></i> NonActive</button> 
+                                    <button type="submit" class="btn btn-secondary"><i class="fas fa-power-off"></i> NonActive</button>
                                   </form>
-                              @endif  
-                                
-                              @if($datas->status == 'D' ) 
+                              @endif
+
+                              @if($datas->status == 'D' )
                                   <form action="{{ route('admin.customer.active',$datas->id) }}" class="d-inline" method="post">
                                     @csrf
                                     @method('patch')
-                                    <button type="submit" class="btn btn-warning"><i class="fas fa-power-off"></i> Active</button> 
+                                    <button type="submit" class="btn btn-warning"><i class="fas fa-power-off"></i> Active</button>
                                   </form>
                               @endif
-                                  <a href="{{ route('admin.customer.edit',$datas->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a> 
+                                  <a href="{{ route('admin.customer.edit',$datas->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</a>
                                   <form action="{{ route('admin.customer.delete',$datas->id) }}" class="d-inline formdelete" method="post">
                                   @csrf
                                   @method('delete')
